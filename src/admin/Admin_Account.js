@@ -58,7 +58,7 @@ function Account() {
   const fetchUserData = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:8080/api/user/profile", {
+      const response = await fetch("https://test-api-deploy-flax.vercel.app/api/user/profile", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -123,7 +123,7 @@ function Account() {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        "http://localhost:8080/api/user/profile/update",
+        "https://test-api-deploy-flax.vercel.app/api/user/profile/update",
         {
           method: "PUT",
           headers: {

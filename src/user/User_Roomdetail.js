@@ -76,12 +76,12 @@ function Roomdetail() {
         const fetchData = async () => {
             try {
                 // Fetch equipment details
-                const equipResponse = await fetch(`http://localhost:8080/api/equipement/${id}`);
+                const equipResponse = await fetch(`https://test-api-deploy-flax.vercel.app/api/equipement/${id}`);
                 const equipData = await equipResponse.json();
                 setEquipmentDetails(equipData);
 
                 // Fetch items for this equipment
-                const itemsResponse = await fetch(`http://localhost:8080/api/items/${id}`);
+                const itemsResponse = await fetch(`https://test-api-deploy-flax.vercel.app/api/items/${id}`);
                 const itemsData = await itemsResponse.json();
                 setItems(itemsData);
             } catch (error) {

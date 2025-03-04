@@ -30,7 +30,7 @@ const NotesPage = ({ userData: initialUserData = { name: "" } }) => {
 
   const fetchNotes = async () => {
     try {
-      const response = await fetch("http://localhost:8080/api/note");
+      const response = await fetch("https://test-api-deploy-flax.vercel.app/api/note");
       const result = await response.json();
       setNotes(
         result.data.map((note) => ({
@@ -51,7 +51,7 @@ const NotesPage = ({ userData: initialUserData = { name: "" } }) => {
   const fetchUserData = async () => {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:8080/api/user/profile", {
+      const response = await fetch("https://test-api-deploy-flax.vercel.app/api/user/profile", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -124,7 +124,7 @@ const NotesPage = ({ userData: initialUserData = { name: "" } }) => {
 
     for (let i = 0; i < totalChunks; i++) {
       const chunk = imageData.slice(i * chunkSize, (i + 1) * chunkSize);
-      const response = await fetch("http://localhost:8080/api/upload-chunk", {
+      const response = await fetch("https://test-api-deploy-flax.vercel.app/api/upload-chunk", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ imageId, chunk, chunkIndex: i, totalChunks }),
@@ -173,7 +173,7 @@ const NotesPage = ({ userData: initialUserData = { name: "" } }) => {
             Note_Images: imagePaths
         };
 
-        const response = await fetch("http://localhost:8080/api/note", {
+        const response = await fetch("https://test-api-deploy-flax.vercel.app/api/note", {
             method: "POST",
             headers: { 
                 "Content-Type": "application/json"
@@ -217,7 +217,7 @@ const NotesPage = ({ userData: initialUserData = { name: "" } }) => {
           imagePaths.push(imagePath);
         } else if (imageData.url) {
           // For existing image URLs
-          imagePaths.push(imageData.url.replace('http://localhost:8080', ''));
+          imagePaths.push(imageData.url.replace('https://test-api-deploy-flax.vercel.app', ''));
         }
         setUploadProgress(((i + 1) / totalImages) * 100);
       }
@@ -230,7 +230,7 @@ const NotesPage = ({ userData: initialUserData = { name: "" } }) => {
         Note_Images: imagePaths,
       };
 
-      const response = await fetch(`http://localhost:8080/api/note/${selectedNote.id}`, {
+      const response = await fetch(`https://test-api-deploy-flax.vercel.app/api/note/${selectedNote.id}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(noteData),
@@ -268,13 +268,13 @@ const NotesPage = ({ userData: initialUserData = { name: "" } }) => {
 
   const handleViewDetails = async (note) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/note/images/${note.id}`);
+      const response = await fetch(`https://test-api-deploy-flax.vercel.app/api/note/images/${note.id}`);
       const result = await response.json();
       setSelectedNote({
         ...note,
         images: result.images.map(image => ({
           ...image,
-          Image_Path: `http://localhost:8080${image.Image_Path}`
+          Image_Path: `https://test-api-deploy-flax.vercel.app${image.Image_Path}`
         })),
       });
       setShowDetailsPopup(true);
@@ -285,13 +285,13 @@ const NotesPage = ({ userData: initialUserData = { name: "" } }) => {
 
   const handleEditClick = async (note) => {
     try {
-      const response = await fetch(`http://localhost:8080/api/note/images/${note.id}`);
+      const response = await fetch(`https://test-api-deploy-flax.vercel.app/api/note/images/${note.id}`);
       const result = await response.json();
       setSelectedNote({
         ...note,
         images: result.images.map(image => ({
           ...image,
-          Image_Path: `http://localhost:8080${image.Image_Path}`
+          Image_Path: `https://test-api-deploy-flax.vercel.app${image.Image_Path}`
         })),
       });
       setNewNote({
@@ -299,7 +299,7 @@ const NotesPage = ({ userData: initialUserData = { name: "" } }) => {
         content: note.content,
         images: result.images.map(image => ({
           file: null, // No file object for existing images
-          url: `http://localhost:8080${image.Image_Path}`
+          url: `https://test-api-deploy-flax.vercel.app${image.Image_Path}`
         })),
         date: note.date,
       });
@@ -312,7 +312,7 @@ const NotesPage = ({ userData: initialUserData = { name: "" } }) => {
   const handleDeleteNote = async (noteId) => {
     if (window.confirm("Are you sure you want to delete this note?")) {
       try {
-        const response = await fetch(`http://localhost:8080/api/note/${noteId}`, {
+        const response = await fetch(`https://test-api-deploy-flax.vercel.app/api/note/${noteId}`, {
           method: "DELETE",
         });
         if (!response.ok) {
@@ -348,7 +348,7 @@ const NotesPage = ({ userData: initialUserData = { name: "" } }) => {
   const handleSearch = async () => {
     try {
       const response = await fetch(
-        `http://localhost:8080/api/note/search?searchType=${searchType}&searchTerm=${encodeURIComponent(searchTerm)}`
+        `https://test-api-deploy-flax.vercel.app/api/note/search?searchType=${searchType}&searchTerm=${encodeURIComponent(searchTerm)}`
       );
       const data = await response.json();
       

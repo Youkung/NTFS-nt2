@@ -21,7 +21,7 @@ function Login() {
         try {
             setLoadingMessage("กำลังเข้าสู่ระบบ...");
             
-            const response = await axios.post("http://localhost:8080/ntdtb/users", {
+            const response = await axios.post("https://test-api-deploy-flax.vercel.app/ntdtb/users", {
                 Username,
                 Password: password
             });

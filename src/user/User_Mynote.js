@@ -35,7 +35,7 @@ function MyNotesPage() {
                 return;
             }
 
-            const response = await fetch('http://localhost:8080/api/user/profile', {
+            const response = await fetch('https://test-api-deploy-flax.vercel.app/api/user/profile', {
                 method: 'GET',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -63,7 +63,7 @@ function MyNotesPage() {
         try {
             if (!userId) return;
 
-            const response = await fetch(`http://localhost:8080/api/note/user/${userId}`);
+            const response = await fetch(`https://test-api-deploy-flax.vercel.app/api/note/user/${userId}`);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
@@ -94,7 +94,7 @@ function MyNotesPage() {
     const handleDeleteNote = async (noteId) => {
         if (window.confirm("Are you sure you want to delete this note?")) {
             try {
-                const response = await fetch(`http://localhost:8080/api/note/${noteId}`, {
+                const response = await fetch(`https://test-api-deploy-flax.vercel.app/api/note/${noteId}`, {
                     method: "DELETE",
                 });
                 if (!response.ok) {
@@ -111,13 +111,13 @@ function MyNotesPage() {
 
     const handleViewDetails = async (note) => {
         try {
-            const response = await fetch(`http://localhost:8080/api/note/images/${note.id}`);
+            const response = await fetch(`https://test-api-deploy-flax.vercel.app/api/note/images/${note.id}`);
             const result = await response.json();
             setSelectedNote({
                 ...note,
                 images: result.images.map(image => ({
                     ...image,
-                    Image_Path: `http://localhost:8080${image.Image_Path}`
+                    Image_Path: `https://test-api-deploy-flax.vercel.app${image.Image_Path}`
                 })),
             });
             setShowDetailsPopup(true);
@@ -128,7 +128,7 @@ function MyNotesPage() {
 
     const handleEdit = async (note) => {
         try {
-            const response = await fetch(`http://localhost:8080/api/note/images/${note.id}`);
+            const response = await fetch(`https://test-api-deploy-flax.vercel.app/api/note/images/${note.id}`);
             const result = await response.json();
             setEditNote({
                 ...note,
@@ -144,7 +144,7 @@ function MyNotesPage() {
     const handleEditSubmit = async (e) => {
         e.preventDefault();
         try {
-            const response = await fetch(`http://localhost:8080/api/note/${editNote.id}`, {
+            const response = await fetch(`https://test-api-deploy-flax.vercel.app/api/note/${editNote.id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -231,7 +231,7 @@ function MyNotesPage() {
                                 {editImages.map((image, index) => (
                                     <div key={image.Image_ID} className="position-relative">
                                         <img
-                                            src={`http://localhost:8080${image.Image_Path}`}
+                                            src={`https://test-api-deploy-flax.vercel.app${image.Image_Path}`}
                                             alt={`Note image ${index + 1}`}
                                             style={{
                                                 width: "100px",

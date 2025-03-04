@@ -22,12 +22,12 @@ function EquipmentDetail() {
         const fetchData = async () => {
             try {
                 // Fetch equipment details
-                const equipResponse = await fetch(`http://localhost:8080/api/equipement/${id}`);
+                const equipResponse = await fetch(`https://test-api-deploy-flax.vercel.app/api/equipement/${id}`);
                 const equipData = await equipResponse.json();
                 setEquipmentDetails(equipData);
 
                 // Fetch items for this equipment
-                const itemsResponse = await fetch(`http://localhost:8080/api/items/${id}`);
+                const itemsResponse = await fetch(`https://test-api-deploy-flax.vercel.app/api/items/${id}`);
                 const itemsData = await itemsResponse.json();
                 setItems(itemsData);
             } catch (error) {
@@ -68,7 +68,7 @@ function EquipmentDetail() {
             const currentDate = new Date().toISOString().slice(0, 19).replace('T', ' ');
 
             // Create history entry first
-            const historyResponse = await fetch('http://localhost:8080/api/changestatus', {
+            const historyResponse = await fetch('https://test-api-deploy-flax.vercel.app/api/changestatus', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -102,7 +102,7 @@ function EquipmentDetail() {
             alert('บันทึกการเปลี่ยนแปลงสำเร็จ');
 
             // Refresh data
-            const itemsResponse = await fetch(`http://localhost:8080/api/items/${id}`);
+            const itemsResponse = await fetch(`https://test-api-deploy-flax.vercel.app/api/items/${id}`);
             const itemsData = await itemsResponse.json();
             setItems(itemsData);
 
