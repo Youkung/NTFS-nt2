@@ -415,7 +415,7 @@ const NotesPage = ({ userData: initialUserData = { name: "" } }) => {
 
                 {/* ปุ่มค้นหา */}
                 <div className="col-md-auto d-flex m-2" style={{ flexGrow: 1.3 }}>
-                  <button className="btn btn-success w-100 m-0">ค้นหา</button>
+                  <button className="btn btn-info w-100 m-0">ค้นหา</button>
                 </div>
                 <Button className="mt-0" variant="success" onClick={handleCreateNoteClick}>
                   สร้างบันทึกใหม่
