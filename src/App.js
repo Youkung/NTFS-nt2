@@ -54,7 +54,6 @@ function App() {
         <Route path="/user/UserRoomdetail" element={<UserRoomdetail />} />
         <Route path="/user/rack/:id" element={<UserRackdetail />} />
 
- 
       </Routes>
     </Router>
   );

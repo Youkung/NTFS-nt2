@@ -63,7 +63,7 @@ function Equipment() {
     e.preventDefault();
     try {
       const response = await axios.put(
-        `https://test-api-deploy-flax.vercel.app/api/equipment/${editData.Equipe_ID}`,
+        `https://test-api-deploy-git-main-ntfs.vercel.app/api/equipment/${editData.Equipe_ID}`,
         {
           Equipe_Photo: editData.Equipe_Photo,
           Equipe_Name: editData.Equipe_Name,
@@ -108,7 +108,7 @@ function Equipment() {
     if (isConfirmed) {
       try {
         await axios.delete(
-          `https://test-api-deploy-flax.vercel.app/api/equipment/${equipmentId}`
+          `https://test-api-deploy-git-main-ntfs.vercel.app/api/equipment/${equipmentId}`
         );
         // รีเฟรชข้อมูลหลังลบสำเร็จ
         FetchData();
@@ -233,7 +233,7 @@ function Equipment() {
     }
 
     try {
-      await axios.post("https://test-api-deploy-flax.vercel.app/api/equipment", equipmentData);
+      await axios.post("https://test-api-deploy-git-main-ntfs.vercel.app/api/equipment", equipmentData);
       setShowModal(false);
       FetchData();
       // รีเซ็ตฟอร์ม
@@ -251,7 +251,7 @@ function Equipment() {
 
   const FetchData = async () => {
     try {
-      const response = await axios.get("https://test-api-deploy-flax.vercel.app/api/equipement");
+      const response = await axios.get("https://test-api-deploy-git-main-ntfs.vercel.app/api/equipement");
       console.log("API Response:", response.data);
       setData(response.data.data);
     } catch (error) {

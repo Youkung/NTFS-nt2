@@ -40,7 +40,7 @@ const UserManagement = () => {
     try {
       if (editingUserId) {
         const response = await fetch(
-          `https://test-api-deploy-flax.vercel.app/api/user/${editingUserId}`,
+          `https://test-api-deploy-git-main-ntfs.vercel.app/api/user/${editingUserId}`,
           {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
@@ -60,7 +60,7 @@ const UserManagement = () => {
           user.User_ID === editingUserId ? updatedData.user : user
         ));
       } else {
-        const response = await fetch("https://test-api-deploy-flax.vercel.app/api/users", {
+        const response = await fetch("https://test-api-deploy-git-main-ntfs.vercel.app/api/users", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(newUser),
@@ -102,7 +102,7 @@ const UserManagement = () => {
 
   const fetchRoles = async () => {
     try {
-      const response = await fetch("https://test-api-deploy-flax.vercel.app/api/roles");
+      const response = await fetch("https://test-api-deploy-git-main-ntfs.vercel.app/api/roles");
       if (!response.ok) {
         throw new Error("Failed to fetch roles");
       }
@@ -117,7 +117,7 @@ const UserManagement = () => {
     if (window.confirm("Are you sure you want to delete this user?")) {
       try {
         const response = await fetch(
-          `https://test-api-deploy-flax.vercel.app/api/user/${userId}`,
+          `https://test-api-deploy-git-main-ntfs.vercel.app/api/user/${userId}`,
           {
             method: "DELETE",
           }
@@ -178,7 +178,7 @@ const UserManagement = () => {
 
     const fetchUsers = async () => {
       try {
-        const response = await fetch("https://test-api-deploy-flax.vercel.app/api/users");
+        const response = await fetch("https://test-api-deploy-git-main-ntfs.vercel.app/api/users");
         const result = await response.json();
         console.log("Fetched Users:", result.data); // ตรวจสอบข้อมูล
         setUsers(result.data);

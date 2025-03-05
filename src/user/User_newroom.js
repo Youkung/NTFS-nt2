@@ -17,7 +17,7 @@ function Admin_AddRoomModal({ isOpen, onClose }) {
 
   useEffect(() => {
     if (isOpen) {
-      fetch("https://test-api-deploy-flax.vercel.app/api/nodes")
+      fetch("https://test-api-deploy-git-main-ntfs.vercel.app/api/nodes")
         .then((res) => res.json())
         .then((data) => setNodes(data.data))
         .catch((err) => console.error(err));
@@ -26,7 +26,7 @@ function Admin_AddRoomModal({ isOpen, onClose }) {
 
   const handleNodeChange = (nodeId) => {
     setSelectedNode(nodeId);
-    fetch(`https://test-api-deploy-flax.vercel.app/api/rooms?nodeId=${nodeId}`)
+    fetch(`https://test-api-deploy-git-main-ntfs.vercel.app/api/rooms?nodeId=${nodeId}`)
       .then((res) => res.json())
       .then((data) => setRooms(data.data))
       .catch((err) => console.error(err));
@@ -35,7 +35,7 @@ function Admin_AddRoomModal({ isOpen, onClose }) {
   const handleSubmit = () => {
     if (buildingName) {
       // ส่งข้อมูลเพิ่มอาคาร
-      fetch("https://test-api-deploy-flax.vercel.app/api/buildings", {
+      fetch("https://test-api-deploy-git-main-ntfs.vercel.app/api/buildings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -47,7 +47,7 @@ function Admin_AddRoomModal({ isOpen, onClose }) {
 
     if (floorName) {
       // ส่งข้อมูลเพิ่มชั้น
-      fetch("https://test-api-deploy-flax.vercel.app/api/floors", {
+      fetch("https://test-api-deploy-git-main-ntfs.vercel.app/api/floors", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -60,7 +60,7 @@ function Admin_AddRoomModal({ isOpen, onClose }) {
 
     if (roomName && roomFloor) {
       // ส่งข้อมูลเพิ่มห้อง
-      fetch("https://test-api-deploy-flax.vercel.app/api/rooms", {
+      fetch("https://test-api-deploy-git-main-ntfs.vercel.app/api/rooms", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -73,7 +73,7 @@ function Admin_AddRoomModal({ isOpen, onClose }) {
 
     if (objectName && selectedRoom) {
       // ส่งข้อมูลเพิ่มอุปกรณ์
-      fetch("https://test-api-deploy-flax.vercel.app/api/objects", {
+      fetch("https://test-api-deploy-git-main-ntfs.vercel.app/api/objects", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -94,7 +94,7 @@ function Admin_AddRoomModal({ isOpen, onClose }) {
       formData.append("Equipment_Image", equipmentImage);
       formData.append("Equipment_Quantity", equipmentQuantity);
 
-      fetch("https://test-api-deploy-flax.vercel.app/api/equipment", {
+      fetch("https://test-api-deploy-git-main-ntfs.vercel.app/api/equipment", {
         method: "POST",
         body: formData,
       })
@@ -116,7 +116,7 @@ function Admin_AddRoomModal({ isOpen, onClose }) {
     formData.append("Equipment_Image", equipmentImage);
     formData.append("Equipment_Quantity", equipmentQuantity);
 
-    fetch("https://test-api-deploy-flax.vercel.app/api/equipment", {
+    fetch("https://test-api-deploy-git-main-ntfs.vercel.app/api/equipment", {
       method: "POST",
       body: formData,
     })

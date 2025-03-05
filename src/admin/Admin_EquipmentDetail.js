@@ -54,13 +54,13 @@ function EquipmentDetail() {
     const fetchDetail = async () => {
       try {
         const equipmentResponse = await axios.get(
-          `https://test-api-deploy-flax.vercel.app/api/equipement/${id}`
+          `https://test-api-deploy-git-main-ntfs.vercel.app/api/equipement/${id}`
         );
         setDetail(equipmentResponse.data);
 
         // Fetch items for this equipment
         const itemsResponse = await axios.get(
-          `https://test-api-deploy-flax.vercel.app/api/items/${id}`
+          `https://test-api-deploy-git-main-ntfs.vercel.app/api/items/${id}`
         );
         setItems(itemsResponse.data);
       } catch (error) {
@@ -73,7 +73,7 @@ function EquipmentDetail() {
   useEffect(() => {
     const fetchNodes = async () => {
       try {
-        const response = await axios.get("https://test-api-deploy-flax.vercel.app/api/nodes");
+        const response = await axios.get("https://test-api-deploy-git-main-ntfs.vercel.app/api/nodes");
         setNodes(response.data.data);
       } catch (error) {
         console.error("Error fetching nodes:", error);
@@ -113,13 +113,13 @@ function EquipmentDetail() {
       if (selectedItem) {
         // Update existing item
         const response = await axios.put(
-          `https://test-api-deploy-flax.vercel.app/api/item/${selectedItem.Item_ID}`,
+          `https://test-api-deploy-git-main-ntfs.vercel.app/api/item/${selectedItem.Item_ID}`,
           newItem
         );
         alert(response.data.message || "แก้ไขข้อมูลสำเร็จ");
       } else {
         // Add new item
-        const response = await axios.post("https://test-api-deploy-flax.vercel.app/api/item", newItem);
+        const response = await axios.post("https://test-api-deploy-git-main-ntfs.vercel.app/api/item", newItem);
         alert(response.data.message || "เพิ่มอุปกรณ์สำเร็จ");
       }
 
@@ -128,7 +128,7 @@ function EquipmentDetail() {
       setSelectedItem(null);
 
       // Refresh items list
-      const itemsResponse = await axios.get(`https://test-api-deploy-flax.vercel.app/api/items/${id}`);
+      const itemsResponse = await axios.get(`https://test-api-deploy-git-main-ntfs.vercel.app/api/items/${id}`);
       setItems(itemsResponse.data);
 
     } catch (error) {
@@ -148,7 +148,7 @@ function EquipmentDetail() {
     setNewEquipment((prev) => ({ ...prev, nodeId }));
     try {
       const response = await axios.get(
-        `https://test-api-deploy-flax.vercel.app/api/rooms/${nodeId}`
+        `https://test-api-deploy-git-main-ntfs.vercel.app/api/rooms/${nodeId}`
       );
       setRooms(response.data.data);
       setObjects([]); // Clear objects when node changes
@@ -163,7 +163,7 @@ function EquipmentDetail() {
     try {
       // เรียก API เพื่อดึงข้อมูล objects ในห้องที่เลือก
       const response = await axios.get(
-        `https://test-api-deploy-flax.vercel.app/api/objects/${roomId}`
+        `https://test-api-deploy-git-main-ntfs.vercel.app/api/objects/${roomId}`
       );
       // ตรวจสอบว่ามี data property และเป็น array หรือไม่
       if (response.data && Array.isArray(response.data)) {
@@ -194,10 +194,10 @@ function EquipmentDetail() {
     }
 
     try {
-      await axios.delete(`https://test-api-deploy-flax.vercel.app/api/item/${itemId}`);
+      await axios.delete(`https://test-api-deploy-git-main-ntfs.vercel.app/api/item/${itemId}`);
       // Refresh items list
       const itemsResponse = await axios.get(
-        `https://test-api-deploy-flax.vercel.app/api/items/${id}`
+        `https://test-api-deploy-git-main-ntfs.vercel.app/api/items/${id}`
       );
       setItems(itemsResponse.data);
     } catch (error) {
@@ -223,7 +223,7 @@ function EquipmentDetail() {
       // Fetch rooms for the selected node
       console.log("Fetching rooms for Node_ID:", item.Node_ID); // Debug log
       const roomsResponse = await axios.get(
-        `https://test-api-deploy-flax.vercel.app/api/rooms/${item.Node_ID}`
+        `https://test-api-deploy-git-main-ntfs.vercel.app/api/rooms/${item.Node_ID}`
       );
       setRooms(roomsResponse.data.data);
       console.log("Fetched rooms:", roomsResponse.data.data); // Debug log
@@ -231,7 +231,7 @@ function EquipmentDetail() {
       // Fetch objects for the selected room
       console.log("Fetching objects for Room_ID:", item.Room_ID); // Debug log
       const objectsResponse = await axios.get(
-        `https://test-api-deploy-flax.vercel.app/api/objects/${item.Room_ID}`
+        `https://test-api-deploy-git-main-ntfs.vercel.app/api/objects/${item.Room_ID}`
       );
       setObjects(objectsResponse.data.data);
       console.log("Fetched objects:", objectsResponse.data.data); // Debug log
@@ -245,7 +245,7 @@ function EquipmentDetail() {
   const handleViewHistory = async (item) => {
     try {
       const response = await axios.get(
-        `https://test-api-deploy-flax.vercel.app/api/item/history/${item.Item_ID}`
+        `https://test-api-deploy-git-main-ntfs.vercel.app/api/item/history/${item.Item_ID}`
       );
       setItemHistory(response.data.data);
       setSelectedItem(item);
@@ -258,7 +258,7 @@ function EquipmentDetail() {
   const fetchSuggestions = (type, search, setSuggestions) => {
     if (search.length > 0) {
       fetch(
-        `https://test-api-deploy-flax.vercel.app/api/equipment/suggestions?type=${type}&search=${search}`
+        `https://test-api-deploy-git-main-ntfs.vercel.app/api/equipment/suggestions?type=${type}&search=${search}`
       )
         .then((res) => res.json())
         .then((data) => {
@@ -313,7 +313,7 @@ function EquipmentDetail() {
       Item_Status: searchStatus,
     }).toString();
 
-    fetch(`https://test-api-deploy-flax.vercel.app/api/equipment/search?${searchParams}`)
+    fetch(`https://test-api-deploy-git-main-ntfs.vercel.app/api/equipment/search?${searchParams}`)
       .then((res) => res.json())
       .then((data) => {
         setItems(data.data);

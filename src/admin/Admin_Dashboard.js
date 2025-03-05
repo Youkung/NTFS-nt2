@@ -71,7 +71,7 @@ function Dashboard() {
     const fetchDeviceSummary = async () => {
       try {
         const response = await fetch(
-          "https://test-api-deploy-flax.vercel.app/api/device-summary"
+          "https://test-api-deploy-git-main-ntfs.vercel.app/api/device-summary"
         );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -93,7 +93,7 @@ function Dashboard() {
     // Fetch equipment count by node
     const fetchEquipmentByNode = async () => {
       try {
-        const response = await fetch("https://test-api-deploy-flax.vercel.app/api/equipment-by-node");
+        const response = await fetch("https://test-api-deploy-git-main-ntfs.vercel.app/api/equipment-by-node");
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -107,7 +107,7 @@ function Dashboard() {
     // Fetch recent activities
     const fetchRecentActivities = async () => {
       try {
-        const response = await fetch('https://test-api-deploy-flax.vercel.app/api/recent-activities');
+        const response = await fetch('https://test-api-deploy-git-main-ntfs.vercel.app/api/recent-activities');
         const data = await response.json();
         setRecentActivities(data);
       } catch (error) {

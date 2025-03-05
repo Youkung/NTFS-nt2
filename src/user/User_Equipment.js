@@ -18,7 +18,7 @@ function Equipment() {
   useEffect(() => {
     const fetchEquipment = async () => {
       try {
-        const response = await fetch('https://test-api-deploy-flax.vercel.app/api/equipement');
+        const response = await fetch('https://test-api-deploy-git-main-ntfs.vercel.app/api/equipement');
         const result = await response.json();
         if (result.data) {
           setEquipment(result.data);
